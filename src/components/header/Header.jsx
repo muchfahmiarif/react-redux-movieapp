@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <div className="header">
+    <div className={`header ${mobileMenu ? "mobileView" : ""}`}>
       <ContentWrapper>
         <div className="logo">
           <img src={logo} alt="TMDB" />
