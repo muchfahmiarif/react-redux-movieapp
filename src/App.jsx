@@ -25,6 +25,7 @@ function App() {
   const fetchApiConfig = async () => {
     // contoh tidak menggunanakan async await
     await fetchDataFromApi("/configuration").then((res) => {
+      // docs : https://developer.themoviedb.org/docs/image-basics
       console.log(res);
 
       const url = {
