@@ -18,6 +18,16 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const openSearch = () => {
+    setShowSearch(true);
+    setMobileMenu(false);
+  };
+
+  const openMobileMenu = () => {
+    setMobileMenu(true);
+    setShowSearch(false);
+  };
+
   return (
     <div className="header">
       <ContentWrapper>
@@ -33,7 +43,7 @@ const Header = () => {
         </ul>
         <div className="mobileMenuItems">
           <HiOutlineSearch />
-          <SlMenu />
+          {mobileMenu ? <VscChromeClose onClick={() => setMobileMenu(false)} /> : <SlMenu onClick={openMobileMenu} />}
         </div>
       </ContentWrapper>
     </div>
