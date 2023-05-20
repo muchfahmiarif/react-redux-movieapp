@@ -19,14 +19,21 @@ function App() {
   console.log(url);
 
   useEffect(() => {
-    apiTesting();
+    fetchApiConfig();
   }, []);
 
-  const apiTesting = async () => {
+  const fetchApiConfig = async () => {
     // contoh tidak menggunanakan async await
-    await fetchDataFromApi("/movie/popular").then((res) => {
+    await fetchDataFromApi("/configuration").then((res) => {
       console.log(res);
-      dispatch(getApiConfiguration(res));
+
+      const url = {
+        backdrop: res.images.secure_base_url + res.images.backdrop_sizes[3], //
+        poster: res.images.secure_base_url + res.images.poster_sizes[3],
+        profile: res.images.secure_base_url + res.images.profile_sizes[3],
+      };
+
+      dispatch(getApiConfiguration(url));
     });
   };
 
