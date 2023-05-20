@@ -3,6 +3,8 @@ import "./HeroBanner.scss";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useFetch from "../../../hooks/useFetch";
+import Img from "../../../components/lazyLoadImage/Img";
+import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
@@ -26,6 +28,9 @@ const HeroBanner = () => {
   return (
     <div>
       <div className="heroBanner">
+        <div className="backdrop-img">
+          <Img src={background} />
+        </div>
         <div className="wrapper">
           <div className="heroBannerContent">
             <span className="title">Welcome</span>
