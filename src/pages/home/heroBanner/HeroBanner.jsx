@@ -9,6 +9,10 @@ const HeroBanner = () => {
   const navigate = useNavigate();
 
   const { data, loading } = useFetch("/movie/upcoming");
+  useEffect(() => {
+    const bg = data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
+    setBackground(bg);
+  }, [data]);
 
   const searchQueryHandler = (e) => {
     // 13 adalah kode untuk tombol enter
