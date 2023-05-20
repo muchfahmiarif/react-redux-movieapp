@@ -28,10 +28,12 @@ const HeroBanner = () => {
   return (
     <div>
       <div className="heroBanner">
-        <div className="backdrop-img">
-          <Img src={background} />
-        </div>
-        <div className="wrapper">
+        {!loading && (
+          <div className="backdrop-img">
+            <Img src={background} />
+          </div>
+        )}
+        <ContentWrapper>
           <div className="heroBannerContent">
             <span className="title">Welcome</span>
             <span className="subTitle">Millions of movies, TV shows and people to discover. Elxplore now.</span>
@@ -45,7 +47,7 @@ const HeroBanner = () => {
               <button>Search</button>
             </div>
           </div>
-        </div>
+        </ContentWrapper>
       </div>
     </div>
   );
