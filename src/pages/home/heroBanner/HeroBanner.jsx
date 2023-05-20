@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./HeroBanner.scss";
 import { useNavigate } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
 
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+
+  const { data, loading } = useFetch("/movie/upcoming");
 
   const searchQueryHandler = (e) => {
     // 13 adalah kode untuk tombol enter
