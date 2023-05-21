@@ -44,6 +44,7 @@ const Header = () => {
     } else {
       navigate("/explore/tv");
     }
+    setMobileMenu(false);
   };
 
   return (
