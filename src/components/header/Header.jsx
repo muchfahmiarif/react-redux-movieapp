@@ -56,19 +56,21 @@ const Header = () => {
           {mobileMenu ? <VscChromeClose onClick={() => setMobileMenu(false)} /> : <SlMenu onClick={openMobileMenu} />}
         </div>
       </ContentWrapper>
-      <div className="searchBar">
-        <ContentWrapper>
-          <div className="searchInput">
-            <input
-              type="text"
-              placeholder="Search for a movice or tv show..."
-              onKeyUp={searchQueryHandler}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <VscChromeClose onClick={() => setShowSearch(false)} />
-          </div>
-        </ContentWrapper>
-      </div>
+      {showSearch && (
+        <div className="searchBar">
+          <ContentWrapper>
+            <div className="searchInput">
+              <input
+                type="text"
+                placeholder="Search for a movice or tv show..."
+                onKeyUp={searchQueryHandler}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              <VscChromeClose onClick={() => setShowSearch(false)} />
+            </div>
+          </ContentWrapper>
+        </div>
+      )}
     </div>
   );
 };
