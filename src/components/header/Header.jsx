@@ -49,6 +49,13 @@ const Header = () => {
 
   const controlNavbar = () => {
     console.log(window.scrollY);
+    if (window.scrollY > 200) {
+      if (window.scrollY > lastScrollY) {
+        setShow("hide");
+      } else {
+        setShow("show");
+      }
+    }
   };
 
   useEffect(() => {
