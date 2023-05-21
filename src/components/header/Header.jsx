@@ -28,6 +28,16 @@ const Header = () => {
     setShowSearch(false);
   };
 
+  const searchQueryHandler = (e) => {
+    // 13 adalah kode untuk tombol enter
+    if (e.keyCode === 13 && query.length > 0) {
+      navigate(`/search/${query}`);
+      setTimeout(() => {
+        setShowSearch(false);
+      }, 1000);
+    }
+  };
+
   return (
     <div className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
@@ -42,10 +52,23 @@ const Header = () => {
           </li>
         </ul>
         <div className="mobileMenuItems">
-          <HiOutlineSearch />
+          <HiOutlineSearch onClick={openSearch} />
           {mobileMenu ? <VscChromeClose onClick={() => setMobileMenu(false)} /> : <SlMenu onClick={openMobileMenu} />}
         </div>
       </ContentWrapper>
+      <div className="searchBar">
+        <ContentWrapper>
+          <div className="searchInput">
+            <input
+              type="text"
+              placeholder="Search for a movice or tv show..."
+              onKeyUp={searchQueryHandler}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <VscChromeClose onClick={() => setShowSearch(false)} />
+          </div>
+        </ContentWrapper>
+      </div>
     </div>
   );
 };
