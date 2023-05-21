@@ -48,7 +48,7 @@ const Header = () => {
   };
 
   const controlNavbar = () => {
-    console.log(window.scrollY);
+    // console.log(window.scrollY); // untuk melihat posisi scroll
     if (window.scrollY > 200) {
       if (window.scrollY > lastScrollY && !mobileMenu) {
         // jika scroll ke bawah dan mobileMenu false maka hide navbar
@@ -68,6 +68,10 @@ const Header = () => {
       window.removeEventListener("scroll", controlNavbar);
     };
   }, [lastScrollY]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <div className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
