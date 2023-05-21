@@ -47,6 +47,17 @@ const Header = () => {
     setMobileMenu(false);
   };
 
+  const controlNavbar = () => {
+    console.log(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
+
   return (
     <div className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
