@@ -6,8 +6,9 @@ const SwitchTabs = ({ data, onTabChange }) => {
   const [left, setLeft] = useState(0);
 
   const activeTabHandler = (tab, index) => {
-    setLeft(index * 100);
+    setLeft(index * 100); // if index = 0, left = 0, if index = 1, left = 100
     setTimeout(() => {
+      // set timeout to make animation smooth
       setSelectedTab(index);
     }, 300);
     onTabChange(tab, index);
