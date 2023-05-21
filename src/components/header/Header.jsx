@@ -50,13 +50,12 @@ const Header = () => {
   const controlNavbar = () => {
     console.log(window.scrollY);
     if (window.scrollY > 200) {
-      // if (window.scrollY > lastScrollY && !mobileMenu) {
-      // jika scroll ke bawah dan mobileMenu false maka hide navbar
-      //   setShow("hide");
-      // } else {
-      //   setShow("show");
-      // }
-      setShow("show");
+      if (window.scrollY > lastScrollY && !mobileMenu) {
+        // jika scroll ke bawah dan mobileMenu false maka hide navbar
+        setShow("hide");
+      } else {
+        setShow("show");
+      }
     } else {
       setShow("top");
     }
