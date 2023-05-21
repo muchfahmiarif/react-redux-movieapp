@@ -55,6 +55,7 @@ const Header = () => {
       } else {
         setShow("show");
       }
+      setLastScrollY(window.scrollY);
     }
   };
 
