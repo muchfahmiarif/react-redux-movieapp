@@ -11,7 +11,19 @@ import PosterFallback from "../../assets/no-poster.png";
 import "./Carousel.scss";
 
 const Carousel = ({ data, loading }) => {
-  return <div>Carousel</div>;
+  const carouselContainer = useRef();
+  // console.log(carouselContainer.current);
+  const { url } = useSelector((state) => state.home);
+  const navigate = useNavigate();
+
+  return (
+    <div className="carousel">
+      <ContentWrapper>
+        <BsFillArrowLeftCircleFill className="carouselLeftNav arrow" onClick={() => navigate("left")} />
+        <BsFillArrowRightCircleFill className="carouselRightNav arrow" onClick={() => navigate("right")} />
+      </ContentWrapper>
+    </div>
+  );
 };
 
 export default Carousel;
