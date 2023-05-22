@@ -16,11 +16,31 @@ const Carousel = ({ data, loading }) => {
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
 
+  const navigation = (direction) => {};
+
   return (
     <div className="carousel">
       <ContentWrapper>
-        <BsFillArrowLeftCircleFill className="carouselLeftNav arrow" onClick={() => navigate("left")} />
-        <BsFillArrowRightCircleFill className="carouselRightNav arrow" onClick={() => navigate("right")} />
+        <BsFillArrowLeftCircleFill className="carouselLeftNav arrow" onClick={() => navigation("left")} />
+        <BsFillArrowRightCircleFill className="carouselRightNav arrow" onClick={() => navigation("right")} />
+        {loading ? (
+          <span>Loading...</span>
+        ) : (
+          <div className="carouselItems">
+            {data?.map((item) => {
+              const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback; // if poster_path is null, use PosterFallback
+
+              return (
+                // id from api in network tab
+                <div key={item.id} className="carouselItem">
+                  <div className="posterBlock">
+                    <Img src={posterUrl} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </ContentWrapper>
     </div>
   );
