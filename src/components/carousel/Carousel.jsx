@@ -54,7 +54,7 @@ const Carousel = ({ data, loading }) => {
                 <div key={items.id} className="carouselItem">
                   <div className="posterBlock">
                     <Img src={posterUrl} />
-                    <CircleRating rating={items.vote_average} />
+                    <CircleRating rating={items.vote_average.toFixed(1)} />
                   </div>
                   <div className="textBlock">
                     <span className="title">{items.title || items.name}</span>
