@@ -36,6 +36,10 @@ const Carousel = ({ data, loading }) => {
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                   </div>
+                  <div className="textBlock">
+                    <span className="title">{item.title || item.name}</span>
+                    <span className="date">{dayjs(item.release_date).format("D MMM YYYY")}</span>
+                  </div>
                 </div>
               );
             })}
