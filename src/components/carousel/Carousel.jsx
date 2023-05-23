@@ -18,13 +18,25 @@ const Carousel = ({ data, loading }) => {
 
   const navigation = (direction) => {}; // direction = left or right
 
+  const skeletonItem = () => {
+    return (
+      <div className="skeletonItem">
+        <div className="posterBlock skeleton"></div>
+        <div className="textBlock">
+          <div className="title skeleton"></div>
+          <div className="date skeleton"></div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="carousel">
       <ContentWrapper>
         <BsFillArrowLeftCircleFill className="carouselLeftNav arrow" onClick={() => navigation("left")} />
         <BsFillArrowRightCircleFill className="carouselRightNav arrow" onClick={() => navigation("right")} />
         {loading ? (
-          <span>Loading...</span>
+          <div className="loadingSkeleton">{skeletonItem()}</div>
         ) : (
           <div className="carouselItems">
             {data?.map((item) => {
