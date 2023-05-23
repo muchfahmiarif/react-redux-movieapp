@@ -13,10 +13,10 @@ import "./Carousel.scss";
 const Carousel = ({ data, loading }) => {
   const carouselContainer = useRef();
   // console.log(carouselContainer.current);
-  const { url } = useSelector((state) => state.home);
+  const { url } = useSelector((state) => state.home); // get url from home reducer
   const navigate = useNavigate();
 
-  const navigation = (direction) => {};
+  const navigation = (direction) => {}; // direction = left or right
 
   return (
     <div className="carousel">
@@ -28,7 +28,7 @@ const Carousel = ({ data, loading }) => {
         ) : (
           <div className="carouselItems">
             {data?.map((item) => {
-              const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback; // if poster_path is null, use PosterFallback
+              const posterUrl = item.poster_path ? `${url.poster}${item.poster_path}` : PosterFallback; // if poster_path is null, use PosterFallback
 
               return (
                 // id from api in network tab
