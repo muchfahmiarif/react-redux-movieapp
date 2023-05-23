@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
+import CircleRating from "../circleRating/CircleRating";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import Img from "../lazyLoadImage/Img";
@@ -45,18 +46,19 @@ const Carousel = ({ data, loading }) => {
           </div>
         ) : (
           <div className="carouselItems">
-            {data?.map((item) => {
-              const posterUrl = item.poster_path ? `${url.poster}${item.poster_path}` : PosterFallback; // if poster_path is null, use PosterFallback
+            {data?.map((items) => {
+              const posterUrl = items.poster_path ? `${url.poster}${items.poster_path}` : PosterFallback; // if poster_path is null, use PosterFallback
 
               return (
                 // id from api in network tab
-                <div key={item.id} className="carouselItem">
+                <div key={items.id} className="carouselItem">
                   <div className="posterBlock">
                     <Img src={posterUrl} />
+                    <CircleRating rating={items.vote_average} />
                   </div>
                   <div className="textBlock">
-                    <span className="title">{item.title || item.name}</span>
-                    <span className="date">{dayjs(item.release_date).format("D MMM YYYY")}</span>
+                    <span className="title">{items.title || items.name}</span>
+                    <span className="date">{dayjs(items.release_date).format("D MMM YYYY")}</span>
                   </div>
                 </div>
               );
