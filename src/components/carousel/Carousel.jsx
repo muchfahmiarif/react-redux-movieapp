@@ -36,7 +36,13 @@ const Carousel = ({ data, loading }) => {
         <BsFillArrowLeftCircleFill className="carouselLeftNav arrow" onClick={() => navigation("left")} />
         <BsFillArrowRightCircleFill className="carouselRightNav arrow" onClick={() => navigation("right")} />
         {loading ? (
-          <div className="loadingSkeleton">{skeletonItem()}</div>
+          <div className="loadingSkeleton">
+            {skeletonItem()}
+            {skeletonItem()}
+            {skeletonItem()}
+            {skeletonItem()}
+            {skeletonItem()}
+          </div>
         ) : (
           <div className="carouselItems">
             {data?.map((item) => {
