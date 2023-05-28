@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useRef } from "react";
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +19,14 @@ const Carousel = ({ data, loading }) => {
   const { url } = useSelector((state) => state.home); // get url from home reducer
   const navigate = useNavigate();
 
-  const navigation = (direction) => {}; // direction = left or right
+  const navigation = (direction) => {
+    const container = carouselContainer.current;
+    const scrollDistance = container.offsetWidth + 20; // 80% of container width
+    const scrollPosition = container.scrollLeft; // current scroll position
+
+    const scrollAmount = direction === "left" ? scrollPosition - scrollDistance : scrollPosition + scrollDistance;
+    container.scrollTo({ left: scrollAmount, behavior: "smooth" });
+  }; // direction = left or right
 
   const skeletonItem = () => {
     return (
@@ -52,7 +60,7 @@ const Carousel = ({ data, loading }) => {
 
               return (
                 // id from api in network tab
-                <div key={items.id} className="carouselItem">
+                <div key={items.id} className="carouselItem" ref={carouselContainer}>
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={items.vote_average.toFixed(1)} />
