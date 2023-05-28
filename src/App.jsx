@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { fetchDataFromApi } from "./utils/api";
 import { useSelector, useDispatch } from "react-redux";
-import { getApiConfiguration } from "./store/homeSlice";
+import { getApiConfiguration, getGenres } from "./store/homeSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/header/Header";
@@ -47,11 +47,13 @@ function App() {
     });
 
     const data = await Promise.all(promises);
-    console.log(data);
+    // console.log(data); // for testing show genres
     data.map(({ genres }) => {
       return genres.map((item) => (allGenres[item.id] = item));
     });
-    console.log(allGenres);
+    // console.log(allGenres); // for testing show all genres
+
+    dispatch(getGenres(allGenres));
   };
 
   return (
