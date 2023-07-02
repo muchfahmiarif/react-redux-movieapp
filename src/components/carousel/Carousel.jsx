@@ -60,7 +60,7 @@ const Carousel = ({ data, loading }) => {
 
               return (
                 // id from api in network tab
-                <div key={items.id} className="carouselItem" ref={carouselContainer}>
+                <div key={items.id} className="carouselItem" ref={carouselContainer} onClick={() => navigate(`/${items.media_type}/${items.id}`)}>
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={items.vote_average.toFixed(1)} />

@@ -12,6 +12,8 @@ import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/404/PageNotFound";
 
+// Docs : https://gist.github.com/ShariqAnsari88/09dbadfd81c41b399a30f6eb9f1f9548
+
 function App() {
   const dispatch = useDispatch();
   const { url } = useSelector((state) => state.home);

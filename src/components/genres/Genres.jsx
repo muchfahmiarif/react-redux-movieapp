@@ -8,7 +8,7 @@ const Genres = ({ data }) => {
   return (
     <div className="genres">
       {data?.map((item) => {
-        if (!genres[item]?.name) return null; // if genres[item] is null, return null
+        if (!genres[item]?.name) return; // if genres[item] is null, return null
         return (
           <span key={item} className="genre">
             {genres[item]?.name}
