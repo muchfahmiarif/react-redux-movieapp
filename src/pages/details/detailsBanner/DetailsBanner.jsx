@@ -55,10 +55,34 @@ const DetailsBanner = ({ video, crew }) => {
                       <Genres data={_genres} />
                       <div className="row">
                         <CircleRating rating={data?.vote_average} />
-                        <div className="playbtn">
+                        <div className="playbtn" onClick={() => {}}>
                           <PlayIcon />
                           <span className="text">Watch Trailer</span>
                         </div>
+                      </div>
+                      <div className="overview">
+                        <div className="heading">Overview</div>
+                        <div className="description">{`${data.overview}`}</div>
+                      </div>
+                      <div className="info">
+                        {data.status && (
+                          <div className="infoItem">
+                            <div className="text bold">Status: {` `}</div>
+                            <div className="text">{`${data.status}`}</div>
+                          </div>
+                        )}
+                        {data.release_date && (
+                          <div className="infoItem">
+                            <div className="text bold">Release Date</div>
+                            <div className="text">{dayjs(data.release_date).format("DD MMM YYYY")}</div>
+                          </div>
+                        )}
+                        {data.runtime && (
+                          <div className="infoItem">
+                            <div className="text bold">Runtime</div>
+                            <div className="text">{toHoursAndMinutes(data.runtime)}</div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
