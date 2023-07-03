@@ -13,7 +13,7 @@ import PosterFallback from "../../assets/no-poster.png";
 import "./Carousel.scss";
 import Genres from "../genres/Genres";
 
-const Carousel = ({ data, loading }) => {
+const Carousel = ({ data, loading, endpoint }) => {
   const carouselContainer = useRef();
   // console.log(carouselContainer.current);
   const { url } = useSelector((state) => state.home); // get url from home reducer
@@ -60,7 +60,11 @@ const Carousel = ({ data, loading }) => {
 
               return (
                 // id from api in network tab
-                <div key={items.id} className="carouselItem" ref={carouselContainer} onClick={() => navigate(`/${items.media_type}/${items.id}`)}>
+                <div
+                  key={items.id}
+                  className="carouselItem"
+                  ref={carouselContainer}
+                  onClick={() => navigate(`/${items.media_type || endpoint}/${items.id}`)}>
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={items.vote_average.toFixed(1)} />
