@@ -52,6 +52,9 @@ const DetailsBanner = ({ video, crew }) => {
                       <div className="title">{`${data.title || data.name} (${dayjs(data.release_date).format("YYYY")})`}</div>
                       <div className="subtitle">{data.tagline && <span className="tagline">{data.tagline}</span>}</div>
                       <Genres data={_genres} />
+                      <div className="row">
+                        <CircleRating rating={data?.vote_average} />
+                      </div>
                     </div>
                   </div>
                 </ContentWrapper>
