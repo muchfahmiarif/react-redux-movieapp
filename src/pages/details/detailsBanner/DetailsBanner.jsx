@@ -18,6 +18,7 @@ import PosterFallback from "../../../assets/no-poster.png";
 const DetailsBanner = ({ video, crew }) => {
   const { id, mediaType } = useParams();
   const { data, loading } = useFetch(`/${mediaType}/${id}`);
+  const { url } = useSelector((state) => state.home);
 
   const toHoursAndMinutes = (totalMinutes) => {
     const hours = Math.floor(totalMinutes / 60);
@@ -28,7 +29,17 @@ const DetailsBanner = ({ video, crew }) => {
   return (
     <div className="detailsBanner">
       {!loading ? (
-        <div>Details Content...</div>
+        <>
+          {!!data && (
+            <React.Fragment>
+              <div>
+                <div className="backdrop-img">
+                  <Img src={`${url.backdrop}${data?.backdrop_path}`} alt={data.title} />
+                </div>
+              </div>
+            </React.Fragment>
+          )}
+        </>
       ) : (
         <div className="detailsBannerSkeleton">
           <ContentWrapper>
