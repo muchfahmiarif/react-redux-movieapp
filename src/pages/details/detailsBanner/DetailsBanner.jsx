@@ -36,6 +36,19 @@ const DetailsBanner = ({ video, crew }) => {
                 <div className="backdrop-img">
                   <Img src={`${url.backdrop}${data?.backdrop_path}`} alt={data.title} />
                 </div>
+                <div className="opacity-layer"></div>
+                <ContentWrapper>
+                  <div className="content">
+                    <div className="left">
+                      {data.poster_path ? (
+                        <Img src={`${url.poster}${data.poster_path}`} alt={data.title} />
+                      ) : (
+                        <img src={PosterFallback} alt={data.title} />
+                      )}
+                    </div>
+                    <div className="right"></div>
+                  </div>
+                </ContentWrapper>
               </div>
             </React.Fragment>
           )}
