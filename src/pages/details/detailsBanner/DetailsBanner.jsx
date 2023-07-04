@@ -23,6 +23,9 @@ const DetailsBanner = ({ video, crew }) => {
 
   const _genres = data?.genres?.map((genre) => genre.id);
 
+  const director = crew?.find((member) => member.job === "Director");
+  const writer = crew?.filter((member) => member.job === "Screenplay" || member.job === "Writer" || member.job === "Story");
+
   const toHoursAndMinutes = (totalMinutes) => {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
@@ -84,6 +87,16 @@ const DetailsBanner = ({ video, crew }) => {
                           </div>
                         )}
                       </div>
+                      {director?.length > 0 && (
+                        <div className="info">
+                          <span className="text bold">Director:{` `}</span>
+                          <span className="text">
+                            {director.map((data, index) => (
+                              <span key={index}>{data.name}</span>
+                            ))}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </ContentWrapper>
